@@ -1,0 +1,38 @@
+<div class="upload-button" [class.disabled]="disabled">
+    <!-- Placeholder -->
+    <p *ngIf="placeholder" class="placeholder">
+        {{placeholder}}
+    </p>
+
+    <!-- No file -->
+    <a *ngIf="!file && !uploading" mat-raised-button color="primary">
+        <ng-content></ng-content>
+        <input #fileInput (change)="onFileChange($event)" type="file" [accept]="accept"/>
+    </a>
+
+    <!-- Uploading -->
+    <div *ngIf="uploading" class="uploading">
+        <edu-spinner></edu-spinner>
+        <span>Uploading...</span>
+    </div>
+
+    <!-- File ready -->
+    <div *ngIf="file && !uploading" class="file" layout="row" layout-align="start center">
+        <svg class="file-icon" width="18px" height="24px" viewBox="0 0 18 24">
+            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                <g transform="translate(-440.000000, -928.000000)" fill="#89C0CA">
+                    <g transform="translate(440.000000, 928.000000)">
+                        <path
+                            d="M17.6893412,6.47171021 C17.7304328,6.59498088 17.7509766,6.77988688 17.7509766,7.02642822 L17.7509766,22.06545 C17.7509766,22.4763544 17.6277059,22.8461628 17.3811646,23.1748861 C17.1346232,23.5036095 16.8264465,23.6679688 16.4566345,23.6679688 L1.47924805,23.6679688 C1.10943406,23.6679688 0.770443269,23.5036095 0.462265015,23.1748861 C0.1540868,22.8461628 0,22.4763544 0,22.06545 L0,1.41761271 C0,1.0478007 0.1540868,0.719080227 0.462265015,0.431447347 C0.770443269,0.143814467 1.10943406,0 1.47924805,0 L11.3409017,0 C11.587443,0 11.772349,0.0410915384 11.8956197,0.123270671 C12.1421611,0.246541341 12.2859755,0.328720473 12.3270671,0.369812012 L17.4427999,6.04026286 C17.5660706,6.16353353 17.6482497,6.307348 17.6893412,6.47171021 Z M11.8956197,2.89686076 L11.8956197,6.77988688 L15.4704692,6.77988688 L11.8956197,2.89686076 Z M1.97233073,21.695638 L15.7786458,21.695638 L15.7786458,8.75221761 L11.6490784,8.75221761 C11.1970833,8.75221761 10.7964595,8.57758745 10.4471913,8.22831923 C10.0979191,7.87904707 9.92328898,7.47842331 9.92328898,7.02642822 L9.92328898,1.97233073 L1.97233073,1.97233073 L1.97233073,21.695638 Z"
+                            id="Page-1"></path>
+                    </g>
+                </g>
+            </g>
+        </svg>
+        <div class="name" [attr.title]="file.name">{{file.name}}</div>
+        <a title="Delete file" class="icon-button close" (click)="delete()">
+            <mat-icon svgIcon="close" color="edu-red"></mat-icon>
+            <span>Delete</span>
+        </a>
+    </div>
+</div>

@@ -1,0 +1,112 @@
+:host {
+    display: flex;
+    border: 1px solid #A7C1C7;
+    min-height: 38px;
+    min-width: 200px;
+    position: relative;
+
+    input {
+        background: transparent;
+        border: none;
+        color: #999;
+        font-size: 1.4em;
+        flex: 1;
+        margin-right: 30px;
+
+        &:focus {
+            outline: none;
+            box-shadow: none;
+        }
+    }
+
+    &.multiple-outputs {
+        padding: 4px;
+        display: block;
+        height: auto;
+        input {
+            float: left;
+            width: auto;
+            height: auto;
+            margin: 0;
+            padding: 3px;
+        }
+        &:after {
+            visibility: hidden;
+            display: block;
+            font-size: 0;
+            content: " ";
+            clear: both;
+            height: 0;
+        }
+    }
+
+    edu-spinner {
+        position: absolute;
+        right: 5px;
+        top: 5px;
+    }
+
+    .multiple {
+        display: flex;
+        align-items: center;
+        background: #f37073;
+        color: #FFF;
+        float:left;
+        padding: 5px;
+        height: 27px;
+        margin-right: 4px;
+        margin-bottom: 4px;
+        font-size: 1.4em;
+        white-space: nowrap;
+        max-width: 100%;
+        border-radius: 2px;
+        span {
+            margin-right: 5px;
+            float: left;
+            margin-top: -2px;
+            white-space: nowrap;
+            max-width: 95%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        a {
+            float: left;
+            opacity: 0.8;
+            &:hover {
+                opacity: 1;
+            }
+        }
+    }
+
+    img {
+        position: absolute;
+        right: 10px;
+        top: 13px;
+        &.locked {
+            right: 27px;
+        }
+    }
+
+    .list {
+        z-index: 10;
+        max-height: 300px;
+        overflow: auto;
+        background: #fff;
+        border: 1px solid #A7C1C7;
+        position: absolute;
+        left: -1px;
+        right: -1px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+        a {
+            display: block;
+            padding: 5px;
+            cursor: default;
+            font-size: 1.2em;
+            &:hover, &.selected {
+                background: #f37073;
+                color: #fff;
+            }
+        }
+    }
+}

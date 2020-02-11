@@ -1,0 +1,376 @@
+<div *ngIf="step <= 5" [className]="'steps line-'+ step" layout="row" layout-align="center center">
+    <div class="step active" *ngIf="regtoken">
+        <span>5</span>
+        <strong>Finalizing</strong>
+    </div>
+</div>
+<div class="contents">
+    <edu-view-stack (change)="onViewStackChange($event)" [swipe]="true" width="100%" height="100%" [index]="step">
+        <view>
+            <!-- Profile data -->
+            <div class="steps-page step-1">
+                <div class="leftside">
+                    <div class="half-wrapper left-wrapper">
+                        <form [formGroup]="profileForm" (submit)="saveProfile()">
+                            <img src="/assets/learnt-logo.svg" width="60px" alt="Learnt Logo" />
+                            <span class="logo-tm text-red">TM</span>
+                            <div class="form-title" layout="row" layout-align="start center">
+                                Personal Details
+                            </div>
+
+                            <div layout="row" class="first-last-names gap-15">
+                                <mat-form-field>
+                                    <input matInput placeholder="First Name" formControlName="first_name">
+                                    <mat-error *ngIf="profileForm.get('first_name').hasError('required')">
+                                        First name is required
+                                    </mat-error>
+                                </mat-form-field>
+                                <mat-form-field>
+                                    <input matInput placeholder="Last Name" formControlName="last_name">
+                                    <mat-error *ngIf="profileForm.get('last_name').hasError('required')">
+                                        Last name is required
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+
+                            <div layout="row" class="gap-15">
+                                <mat-form-field>
+                                    <input matInput [matDatepicker]="picker" placeholder="Date of birth" formControlName="birthday" [min]="minDate" [max]="maxDate" readonly (click)="picker.open()" />
+                                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                    <mat-datepicker #picker></mat-datepicker>
+                                    <mat-error *ngIf="profileForm.get('birthday').hasError('required')">
+                                        Date of birth is required
+                                    </mat-error>
+                                    <mat-error *ngIf="profileForm.get('birthday').hasError('apiError')">
+                                        Date of birth can't be empty
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+
+                            <div formGroupName="location">
+                                <!-- hidden fields -->
+                                <div formGroupName="position">
+                                    <div formGroupName="coordinates">
+                                        <input type="hidden" formControlName="lat"/>
+                                        <input type="hidden" formControlName="lng"/>
+                                    </div>
+                                </div>
+
+                                <input type="hidden" formControlName="street_number"/>
+                                <!-- end hidden fields -->
+
+                                <div layout="row" class="gap-15">
+                                    <mat-form-field>
+                                        <input matInput placeholder="Zip Code" formControlName="postal_code">
+                                        <mat-error *ngIf="profileForm.get('location').get('postal_code').hasError('required')">
+                                            Zip Code is required
+                                        </mat-error>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div layout="row" class="gap-15">
+                                <mat-form-field>
+                                    <input matInput type="email" name="email" placeholder="Email" formControlName="email">
+                                    <mat-error *ngIf="profileForm.get('email').hasError('required')">
+                                        Email is required
+                                    </mat-error>
+                                    <mat-error *ngIf="profileForm.get('email').hasError('email')">
+                                        Email is invalid
+                                    </mat-error>
+                                    <mat-error *ngIf="profileForm.get('email').hasError('apiError')">
+                                        {{profileForm.get('email').getError('apiError')}}
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+
+                            <div layout="column">
+                                <div class="referral">
+                                    <a (click)="showRef=!showRef">Got a referral code? Click here!</a>
+                                </div>
+                                <mat-form-field [formGroup]="profileForm" *ngIf="showRef">
+                                    <input matInput placeholder="Enter referral code here" formControlName="referrer" class="referral-input" type="text">
+                                </mat-form-field>
+                            </div>
+                            <div layout="row" layout-align="end center" class="form-buttons">
+                                <button mat-raised-button color="primary" type="submit" class="next-btn" [disabled]="!profileForm.valid">
+                                    Next
+                                </button>
+                            </div>
+
+                        </form>
+                    </div>
+
+                </div>
+                <div class="rightside" #rightSide>
+                    <div class="half-wrapper right-wrapper">
+                        <h1>
+                            Learnt brings students and tutors together&nbsp;<span class="title-dot"></span>
+                        </h1>
+                        <div class="footermsg">
+                            All you have to do is share your brilliance with eager minds, we handle the rest
+                        </div>
+
+                        <ul>
+                            <li>
+                                <div class="icon">
+                                    <mat-icon color="edu-turquoise" svgIcon="calendar"></mat-icon>
+                                </div>
+                                <div class="message">Chat and schedule lessons with your students using an interface that syncs with all of your
+                                    calendars.
+                                </div>
+                            </li>
+                            <li>
+                                <div class="icon">
+                                    <mat-icon color="edu-turquoise" svgIcon="flash"></mat-icon>
+                                </div>
+                                <div class="message">
+                                    No lessons scheduled, but at home and ready to teach? Sign in and meet with new students looking for
+                                    a tutor now.
+                                </div>
+                            </li>
+                            <li>
+                                <div class="icon">
+                                    <mat-icon color="edu-turquoise" svgIcon="dollar"></mat-icon>
+                                </div>
+                                <div class="message">Set your own rate and get paid via direct deposit.</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </view>
+        <view>
+            <!-- SUBJECTS -->
+            <div class="steps-page step-2">
+                <div class="leftside">
+                    <div class="left-wrapper">
+                        <img src="/assets/learnt-logo.svg" width="60px" alt="Learnt Logo" />
+                        <span class="logo-tm text-red">TM</span>
+
+                        <div class="education form-title" layout="row" layout-align="start center">
+                            <div>Education</div>
+                        </div>
+
+                        <div class="resume-container" [formGroup]="resumeForm">
+                            <edu-upload-button formControlName="resume" context="applying" [extensions]="['pdf']" [mimes]="['application/pdf']" 
+                                                  placeholder="Please upload your resume in PDF format" required>
+                                Choose File
+                            </edu-upload-button>
+                            <ul *ngIf="profileFormErrors?.resume" class="resume-errors form-item-errors">
+                                <li [hidden]="!profileFormErrors.resume.required">
+                                    Resume file is required
+                                </li>
+                            </ul>
+                        </div>
+ 
+
+                        <div layout="row" layout-align="end center" class="gap-10 form-buttons">
+                            <button mat-button (click)="step = step - 1" class="back-btn">
+                                <span>Back</span>
+
+                            </button>
+                            <button mat-raised-button class="next-btn" color="primary" (click)="saveSubjects()">
+                                Next
+                            </button>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="rightside">
+                    <img width="558" height="331" src="/assets/apply-subjects-illustration.png" />
+                </div>
+
+            </div>
+        </view>
+        <view>
+            <!-- VIDEO -->
+            <div class="steps-page step-3">
+                <div class="leftside">
+
+                    <form [formGroup]="videoForm">
+                        <img src="/assets/learnt-logo.svg" width="60px" alt="Learnt Logo"/>
+                        <span class="logo-tm text-red">TM</span>
+                        <div class="form-title">
+                            <div>Video</div>
+                        </div>
+                        <p>
+                            We want to get a better feel for your teaching personality, Please pick a topic and record a video example of how you
+                            would teach us (at least 90 seconds). Be creative!
+                        </p>
+
+                        <div class="no-camera-wrapper" *ngIf="!isVideoRecordingSupported()">
+                            <p class="no-camera-text">
+                                We can't get your camera. Please allow the website to use your webcam.
+                            </p>
+                        </div>
+                        <edu-video-recording formControlName="video" required *ngIf="isVideoRecordingSupported()"></edu-video-recording>
+
+                        <div layout="row" layout-align="end center">
+                            <button mat-button (click)="uploadVideo(true)" *ngIf="this.videoUpload">
+                                <span *ngIf="!uploadingVideo">Upload again</span>
+                                <span *ngIf="uploadingVideo">Uploading...</span>
+                            </button>
+                        </div>
+                        <p>
+                            At Learnt, we take the privacy of users very seriously. In the future, we may use this video to promote your profile.
+                            Do we have your permission?
+                            <span class="video-permit">
+                                <edu-checkbox group="permit" formControlName="agree" [value]="true" required>Yes</edu-checkbox>
+                                <edu-checkbox group="permit" formControlName="agree" [value]="false" required>No</edu-checkbox>
+                            </span>
+                        </p>
+
+
+                        <div layout="row" layout-align="end center" class="gap-10 form-buttons">
+                            
+                            <button mat-button (click)="step = step - 1" class="back-btn">
+                                Back
+                            </button>
+                            <button mat-raised-button color="primary" (click)="uploadVideo(!isVideoRecordingSupported())" class="next-btn">
+                                <edu-spinner color="#FFFFFF" [size]="15" [thickness]="1" *ngIf="uploadingVideo"></edu-spinner>
+                                <span *ngIf="!uploadingVideo || !isVideoRecordingSupported()">Next</span>
+                                <span *ngIf="uploadingVideo">Uploading...</span>
+                            </button>
+
+                        </div>
+                    </form>
+
+                </div>
+                <div class="rightside">
+                    <img width="339" height="271" src="/assets/apply-video-illustration.png"/>
+                </div>
+            </div>
+        </view>
+        <view>
+            <div class="steps-page step-4">
+                <div class="leftside">
+                    <div>
+                        <form [formGroup]="legalForm">
+                            <img src="/assets/learnt-logo.svg" width="60px" alt="Learnt Logo" />
+                            <span class="logo-tm text-red">TM</span>
+                            <div class="form-title">
+                                <div>Account Verification</div>
+                            </div>
+                            <div class="legal-check">
+                                <h3>For authentication purposes we need your Social Security Number to run a background check through Checkr</h3>
+                            </div>
+                            <div class="legal-check checkr-link">
+                                <a href="https://checkr.com/terms-of-service/" target="_blank">Checkr's terms and conditions</a>
+                            </div>
+
+                            <div class="legal-check">
+                                <mat-form-field>
+                                    <input matInput placeholder="Social Security Number" required formControlName="ssn" matTooltip="The SSN should look like XXX-YY-ZZZZ" />
+                                    <mat-error *ngIf="legalForm.get('ssn').hasError('required')">
+                                        The Social Security Number is required.
+                                    </mat-error>
+                                    <mat-error *ngIf="legalForm.get('ssn').hasError('isSSN')">
+                                        The Social Security Number is invalid.
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div class="legal-check secure-list">
+                                <ul>
+                                    <li>
+                                        <mat-icon svgIcon="checkmark" color="edu-turquoise"></mat-icon> Remains private - never shared
+                                    </li>
+                                    <li>
+                                        <mat-icon svgIcon="checkmark" color="edu-turquoise"></mat-icon> No credit check - credit won’t be affected
+                                    </li>
+                                    <li> 
+                                        <mat-icon svgIcon="checkmark" color="edu-turquoise"></mat-icon> Information is safe & secure
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="legal-check">
+                                <edu-checkbox formControlName="agree_terms_privacy" [keepDefaultBehaviour]="true">
+                                    I agree with the <a target="_blank" routerLink="/terms-of-use">Terms</a> and <a target="_blank" routerLink="/privacy-policy">Privacy</a>
+                                </edu-checkbox>
+                            </div>
+                        </form>
+                        <div layout="row" layout-align="end center" class="gap-10 legal-submit form-buttons">
+                            <button mat-button (click)="step = step - 1" class="back-btn">
+                                Back
+                            </button>
+                            <button mat-raised-button [disabled]="legalForm.invalid || submitting" color="primary" (click)="submit()" class="next-btn">
+                                <edu-spinner color="#FFFFFF" [size]="15" [thickness]="1" *ngIf="submitting"></edu-spinner>
+                                <span *ngIf="!submitting">Submit</span>
+                                <span *ngIf="submitting">Saving...</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="rightside">
+                    <img width="555" height="286" src="/assets/apply-legal-illustration.png" />
+                </div>
+
+            </div>
+        </view>
+        <view>
+            <div class="steps-page step-5" layout="column" layout-align="center center">
+                <div class="center">
+                    <h1>Thank you for your interest in working with Learnt</h1>
+                    <p>Due to the high number of applications we receive, we are unable to respond to all candidates. However, we will review each
+                        application carefully and should we believe your skills are a good fit for our app, we will be in touch with you directly.</p>
+                    <img src="/assets/apply-complete-illustration.png" />
+                    <p>
+                        Should you have any questions, please feel free to contact the HR team at <a href="mailto:hiring@learnt.io">hiring@learnt.io</a>
+                    </p>
+                </div>
+            </div>
+        </view>
+        <view>
+            <div class="steps-page step-4" layout="row" layout-align="center start">
+                <div class="leftside">
+                    <img width="555" height="286" src="/assets/apply-legal-illustration.png"/>
+                </div>
+                <div class="rightside">
+                    <div class="form-title" layout="row" layout-align="start center">
+                        <mat-icon svgIcon="locked" color="edu-red"></mat-icon>
+                        <div>Create Password</div>
+                    </div>
+                    <form [formGroup]="passwordForm" layout="column">
+
+                        <div style="margin-bottom: 30px;">
+                            <mat-form-field>
+                                <input matInput type="password" placeholder="Password" formControlName="password" required>
+                                <mat-error *ngIf="passwordForm.get('password').hasError('required')">
+                                    Password check is required
+                                </mat-error>
+                                <mat-error *ngIf="passwordForm.get('password').hasError('minlength')">
+                                    Password must be at least {{passwordForm.get('password').errors.minlength.requiredLength}} characters long.
+                                </mat-error>
+
+                                <mat-error *ngIf="passwordForm.get('password').hasError('passwordValidator')">
+                                    <div *ngIf="passwordForm.get('password').errors.passwordValidator?.digit">
+                                        {{passwordForm.get('password').errors.passwordValidator?.digit}}
+                                    </div>
+                                    <div *ngIf="passwordForm.get('password').errors.passwordValidator?.upperChar">
+                                        {{passwordForm.get('password').errors.passwordValidator?.upperChar}}
+                                    </div>
+                                    <div *ngIf="passwordForm.get('password').errors.passwordValidator?.lowerChar">
+                                        {{passwordForm.get('password').errors.passwordValidator?.lowerChar}}
+                                    </div>
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+
+                        <div>
+                            <mat-form-field>
+                                <input matInput type="password" placeholder="Check Password" formControlName="check" required>
+                                <mat-error *ngIf="passwordForm.get('check').hasError('required')">
+                                    Password check is required
+                                </mat-error>
+                                <mat-error *ngIf="passwordForm.get('check').hasError('confirmPassword')">
+                                    Password do not match
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+
+                    </form>
+                    <button mat-raised-button [disabled]="!passwordForm.valid" color="primary" (click)="createPassword()">Save</button>
+                </div>
+            </div>
+        </view>
+    </edu-view-stack>
+</div>
