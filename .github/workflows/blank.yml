@@ -14,6 +14,6 @@ jobs:
     - name: npm install
       run: npm install
     - name: Build project
-      run: ng build --prod
+      run: npm run-script build
     - name: Check build
       run: ls -l
