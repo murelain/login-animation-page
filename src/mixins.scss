@@ -1,0 +1,50 @@
+@mixin counter {
+    display: inline-block;
+    position: relative;
+    border-radius: 50%;
+    background: #89c0ca;
+    color: #fff;
+    font-size: 1em;
+    min-width: 17px;
+    text-align: center;
+    padding: 4px;
+    min-width: 22px;
+    min-height: 22px;
+    line-height: 15px;
+}
+
+@mixin button {
+    border: 1px solid $red-color;
+    border-radius: 100px;
+    height: 40px;
+    min-width: 140px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.4em;
+    font-weight: 300;
+    cursor: pointer;
+    transition: background 0.3s ease-out;
+    line-height: 0;
+    padding: 0 20px;
+    white-space: nowrap;
+    &:after {
+        content: 'DEPRECATED';
+        display: block;
+    }
+    img {
+        margin-right: 5px;
+    }
+
+    &[disabled] {
+        opacity: 0.6;
+        filter: grayscale(100%);
+        pointer-events: none;
+    }
+}
+
+@mixin flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

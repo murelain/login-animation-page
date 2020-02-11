@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>MobileTest</title>
+  <base href="/">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <style>
+    html {
+        height: 100%;
+    }
+
+    body {
+        height: 100%;
+        font-weight: 400;
+        font-size: 62.5%;
+        font-family: 'proximasoft-regular', sans-serif;
+        background-color: #fff;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    edu-root {
+        height: 100%;
+        display: flex;
+    }
+
+    edu-root:not([ng-version]) {
+        display: block;
+    }
+
+    @keyframes spin {
+        from {
+            transform: rotate(0deg);
+        }
+        to {
+            transform: rotate(360deg);
+        }
+    }
+
+    .spinner {
+        position: relative;
+        box-sizing: border-box;
+        display: inline-block;
+        padding: 0px;
+        border-radius: 100%;
+        border-style: solid;
+        animation: spin 0.8s linear infinite;
+    }
+
+    .spinner .margins {
+        margin: 0px 10px;
+    }
+
+    .startup-screen {
+        width: 100%;
+        height: 100%;
+        position: relative;
+    }
+
+    .startup-screen .center {
+        width: 90px;
+        height: 90px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        margin-left: -45px;
+        margin-top: -45px;
+    }
+
+    .startup-screen .spinner {
+        width: 90px;
+        height: 90px;
+        position: absolute;
+        border: 1px solid rgba(243, 112, 115, 0.1);
+        border-top-color: rgba(243, 112, 115, 1);
+    }
+
+    .startup-screen img {
+        margin-top: 22px;
+        margin-left: 30px;
+    }
+</style>
+</head>
+
+<body class="edu-theme">
+  <edu-root>
+      <div class="startup-screen">
+          <div class="center">
+              <div class="spinner"></div>
+              <img src="/assets/logo.svg"/>
+          </div>
+      </div>
+  </edu-root>
+
+  </body>
+</html>

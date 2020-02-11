@@ -1,0 +1,21 @@
+<video #video></video>
+<div class="controls" [ngSwitch]="state">
+    <ng-content></ng-content>
+    <div class="stretch" *ngSwitchCase="'initial'">
+        <button mat-raised-button (click)="startRecord()" [disabled]="requesting">Record Video</button>
+    </div>
+
+    <div class="footer" *ngSwitchCase="'recording'">
+        <button mat-raised-button (click)="stopRecord()">Stop</button>
+    </div>
+
+    <div class="footer" *ngSwitchCase="'recorded'">
+        <button mat-raised-button (click)="play()">Play</button>
+        <button mat-raised-button (click)="startRecord()" [disabled]="requesting">Record Again</button>
+    </div>
+
+    <div class="footer" *ngSwitchCase="'playing'">
+        <button mat-raised-button (click)="stopPlaying()">Stop</button>
+        <button mat-raised-button (click)="startRecord()" [disabled]="requesting">Record Again</button>
+    </div>
+</div>

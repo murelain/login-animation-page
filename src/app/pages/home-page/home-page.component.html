@@ -1,0 +1,247 @@
+<div class="preload">
+  <div style="background: url('/assets/index/animation_0.png');"></div>
+  <div style="background: url('/assets/index/animation_00.png');"></div>
+  <div style="background: url('/assets/index/animation_01.png');"></div>
+  <div style="background: url('/assets/index/animation_02.png');"></div>
+  <ng-container *ngIf="scrollStep >= 1">
+      <div style="background: url('/assets/index/animation_03.png');"></div>
+      <div style="background: url('/assets/index/animation_04.png');"></div>
+      <div style="background: url('/assets/index/animation_05.png');"></div>
+      <div style="background: url('/assets/index/animation_06.png');"></div>
+  </ng-container>
+  <ng-container *ngIf="scrollStep >= 5">
+      <div style="background: url('/assets/index/animation_07.png');"></div>
+      <div style="background: url('/assets/index/animation_08.png');"></div>
+      <div style="background: url('/assets/index/animation_09.png');"></div>
+      <div style="background: url('/assets/index/animation_10.png');"></div>
+      <div style="background: url('/assets/index/animation_11.png');"></div>
+  </ng-container>
+</div>
+
+<div class="animation {{ sceneClass }}" [ngClass]="{ scrolled: scrollStep > 1, up: directionDelta === -1, down: directionDelta === 1 }">
+  <div class="animation-container">
+      <img #backgroundImage [class]="sceneClass" src="/assets/index/aspect-ratio.png" />
+      <div class="animation-elements">
+          <div class="animation-elements-container">
+              <!-- #1 searchbar ---->
+              <div class="animation-page" [ngClass]="{ visible: scrollStep <= 2 && scrollStep >= 1 }">
+                  <div class="text">
+                      <div class="text-title">Searching a subject</div>
+                      Learnt's team tutors a plethora of subjects and difficulty levels.
+                      Search a subject to browse tutors available&nbsp;
+                  </div>
+                  <div class="animation-block search-bar">
+                      <div class="search-text">Algebra</div>
+                      <div class="search-glass">
+                          <mat-icon svgIcon="search" color="edu-turquoise"></mat-icon>
+                      </div>
+
+                  </div>
+              </div>
+              <!-- #2 profiles ---->
+              <div class="animation-page" [ngClass]="{ visible: scrollStep <= 4 && scrollStep > 2 }">
+                  <div class="text">
+                      <div class="text-title">Browse available tutors</div>
+                      Use the search interface to review candidates who match your criteria.
+                      ome of them might be online when you are searching&nbsp;
+                  </div>
+
+                  <div class="animation-block profiles visible">
+                      <img class="p1" src="/assets/index/profile1.png" />
+                      <img class="p2" src="/assets/index/profile2.png" />
+                      <img class="p3" src="/assets/index/profile3.png" />
+                  </div>
+              </div>
+
+              <!-- #3 profile & text -->
+              <div class="animation-page" [ngClass]="{ visible: scrollStep <= 7 && scrollStep > 5 }">
+                  <div class="text">
+                      <div class="text-title">Find the right fit</div>
+                      Personalizing learning allows students to build upon their foundations and strengths.
+                      Find a tutor who complements your learning preferences&nbsp;
+                  </div>
+
+                  <div class="animation-block profiles-w-text">
+                      <img class="p1" src="/assets/index/profile1.png" />
+                      <div class="profile-description">
+                          <div class="">
+                              <div class="bubble"></div>
+                              <div class="bubble"></div>
+                              <div class="bubble"></div>
+                              <br />
+                              <div class="bubble"></div>
+                              <div class="bubble"></div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+              <!-- #4 messages -->
+              <div class="animation-page" [ngClass]="{ visible: scrollStep <= 9 && scrollStep > 7 }">
+                  <div class="text">
+                      <div class="text-title">Message your tutor</div>
+                      Interact in real time with your tutor to confirm whether (s)he is the right fit for your goals&nbsp;
+                  </div>
+
+                  <div class="animation-block messages visible" *ngIf="scrollStep > 7 && scrollStep <= 9">
+                      <div class="m1">
+                          <div class="message left">
+                              <div class="bubble"></div>
+                              <div class="bubble"></div>
+                              <div class="bubble"></div>
+                          </div>
+                      </div>
+                      <div class="m2">
+                          <div class="message right">
+                              <div class="bubble"></div>
+                              <div class="bubble"></div>
+                          </div>
+                      </div>
+                      <div class="m3">
+                          <div class="message left">
+                              <div class="bubble"></div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="animation-page" [ngClass]="{ visible: scrollStep <= 10 && scrollStep > 9 }">
+                  <div class="text">
+                      <div class="text-title">Jump into an Instant Session</div>
+                      Ready to roll? Great! You can select Instant Session on search 
+                      to jump into a virtual classroom and start tutoring right away&nbsp;
+                  </div>
+                  <!-- #5 instant session -->
+                  <div class="animation-page" class="animation-block instant-session">
+                      <img class="p1" src="/assets/index/instant-session.png" />
+                      <div class="messages visible">
+                          <div class="m1">
+                              <div class="message left">
+                                  <div class="bubble"></div>
+                                  <div class="bubble"></div>
+                                  <div class="bubble"></div>
+                              </div>
+                          </div>
+                          <div class="m2">
+                              <div class="message right">
+                                  <div class="bubble"></div>
+                                  <div class="bubble"></div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="animation-page" [ngClass]="{ visible: scrollStep <= 12 && scrollStep > 10 }">
+                  <div class="text">
+                      <div class="text-title">Virtual Classroom</div>
+                      Utilize interactive learning tools in our virtual classroom such as drawing mathematic equations, editing code, or editing text in another language&nbsp;
+                  </div>
+                  <!-- #6 rombo -->
+                  <div class="animation-block rombo">
+                      <img class="p1" src="/assets/index/figures.png" />
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+<div class="points" [style.opacity]="scrollStep > 0 ? 1 : 0">
+  <div class="point" [ngClass]="{ active: scrollStep <= 3 }"></div>
+  <div class="point" [ngClass]="{ active: scrollStep <= 5 && scrollStep > 3 }"></div>
+  <div class="point" [ngClass]="{ active: scrollStep <= 7 && scrollStep > 5 }"></div>
+  <div class="point" [ngClass]="{ active: scrollStep <= 9 && scrollStep > 7 }"></div>
+  <div class="point" [ngClass]="{ active: scrollStep <= 11 && scrollStep > 9 }"></div>
+  <div class="point" [ngClass]="{ active: scrollStep <= 12 && scrollStep > 11 }"></div>
+</div>
+<div class="body" (swipeleft)="onSwipe($event)" (swiperight)="onSwipe($event)"  [ngClass]="{ scrolled: scrollStep > 0 }">
+  <div class="main-content step-{{scrollStep}}">
+      <div class="greeting">
+          <div class="welcome">
+              <h2>Welcome to</h2>
+              <img src="/assets/learnt-logo.svg" alt="Learnt logo" title="Learnt logo" class="logo-big" />
+              <div class="logo-tm logo-tm-welcome text-red">TM</div>
+          </div>
+          <p>A place where you can connect instantly with talented tutors.</p>
+          <p>It's easy to get started, just search your subject below</p>
+      </div>
+
+      <div class="search-box">
+          <mat-icon svgIcon="search" color="edu-turquoise"></mat-icon>
+
+          <div class="search-input">
+              <input #searchInput placeholder="What do you want to learn today?" (keyup)="keyUpHandler($event)" />
+          </div>
+      </div>
+
+      <div class="start-button-wrapper">
+          <div class="start-button">
+              <mat-icon svgIcon="full-arrow-down"></mat-icon>
+          </div>
+      </div>
+  </div>
+
+  <div class="partners">
+      <div><img class="new-york-times" src="/assets/partners/new-york-times.png" alt="The New York Times" title="The New York Times" /></div>
+      <div><img class="bloomberg-business" src="/assets/partners/bloomberg-business.png" alt="Bloomberg Business" title="Bloomberg Business" /></div>
+      <div><img class="forbes" src="/assets/partners/forbes.png" alt="Forbes" title="Forbes" /></div>
+      <div><img class="fast-company" src="/assets/partners/fast-company.png" alt="Fast Company" title="Fast Company" /></div>
+      <div><img class="buzzfeed" src="/assets/partners/buzzfeed.png" alt="BuzzFeed" title="BuzzFeed" /></div>
+      <div><img class="business-insider" src="/assets/partners/business-insider.png" alt="Business Insider" title="Business Insider" /></div>
+  </div>
+</div>
+
+<div class="sign-up-wrapper">
+  <div class="sign-up sign-up-desktop">
+      <!-- <form [formGroup]="signUpForm">
+          <div class="sign-up-row">
+              <span class="text">I'm a</span>
+              <mat-form-field>
+                  <mat-select formControlName="role">
+                      <mat-option [value]="'student'">student</mat-option>
+                      <mat-option [value]="'tutor'">tutor</mat-option>
+                  </mat-select>
+              </mat-form-field>
+          </div>
+          <div class="sign-up-row">
+              <span class="text text-desktop">and my email is</span>
+              <span class="text text-mobile">My email</span>
+              <mat-form-field class="email-address">
+                  <input matInput placeholder="your email here" formControlName="email" />
+              </mat-form-field>
+          </div>
+
+          <button mat-raised-button type="button" [disabled]="signUpForm.pristine || signUpForm.invalid" (click)="submitSignUp()">
+              Join Us
+          </button>
+      </form> -->
+  </div>
+  <div class="sign-up sign-up-mobile">
+      <button mat-raised-button type="button" [routerLink]="['/apply']">
+              Join Us
+      </button>
+  </div>
+</div>
+
+<div class="footer-wrapper">
+  <div class="footer">
+      <div class="left">
+          <img class="logo" src="/assets/learnt-logo.svg" alt="Learnt logo" title="Learnt logo" />
+          <div class="logo-tm logo-tm-footer text-red">TM</div>
+          <div class="terms">
+              <a [routerLink]="['/privacy-policy']" class="title">Terms and Privacy</a>
+              <p class="content">&copy; Tutor the People LLC 2018 87 Lafayette Street, New York, NY 10013</p>
+          </div>
+      </div>
+
+      <div class="right">
+          <div class="logos">
+              <mat-icon svgIcon="facebook-tiny" color="edu-red" class="facebook"></mat-icon>
+              <mat-icon svgIcon="instagram-tiny" color="edu-red" class="instagram"></mat-icon>
+              <mat-icon svgIcon="twitter-tiny" color="edu-red" class="twitter"></mat-icon>
+              <mat-icon svgIcon="youtube-tiny" color="edu-red" class="youtube"></mat-icon>
+              <mat-icon svgIcon="pinterest-tiny" color="edu-red" class="pinterest"></mat-icon>
+          </div>
+      </div>
+  </div>
+</div>

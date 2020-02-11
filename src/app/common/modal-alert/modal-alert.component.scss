@@ -1,0 +1,32 @@
+:host {
+    display: flex;
+    background-image: linear-gradient(0deg, #F37073 14%, #F84E82 100%);
+    border-radius: 4px;
+    min-height: 160px;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+
+    svg {
+        margin: 0 20px;
+    }
+
+    .messages {
+        max-width: 400px;
+        margin-right: 20px;
+        font-weight: 300;
+        h1 {
+            color: #fff;
+            font-size: 26px;
+            padding-bottom: 5px;
+        }
+        p {
+            color: #fff;
+            font-size: 14px;
+        }
+    }
+
+    .buttons {
+        margin-top: 20px;
+    }
+}
