@@ -19,15 +19,17 @@ jobs:
     - name: Build project
       run: npm run-script build
     - name: Check build
-      run: |
-           cd dist
-           ls -l
-    - name: FTP Deploy
-      uses: SamKirkland/FTP-Deploy-Action-Typescript@master
+      run: ls -l
+    - name: dist-to-ft
+    - uses: isthatcentered/dist-to-ftp@v1
       with:
-          ftp_server: ftp://ftp-115664.srv.hoster.ru:21/srv115664.hoster-test.ru
-          ftp_username: srv115664
-          ftp_password: 4902360q
-          args: --syncroot=build
-
+        user: srv115664
+        password: ${{ secrets.PASSWORD }}
+        host: ftp-115664.srv.hoster.ru
+        # Path to your build folder (usually ./dist or ./public)
+        path: ./dist
+        # Where to place the files in your ftp
+        into: srv115664.hoster-test.ru
+        # Remove existing file inside FTP destination folder
+        cleanupExisting: false
 
