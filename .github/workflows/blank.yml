@@ -25,10 +25,9 @@ jobs:
     - name: FTP Deploy
       uses: SamKirkland/FTP-Deploy-Action-Typescript@master
       with:
-          ftp_server: ftp://ftp-115664.srv.hoster.ru
+          ftp_server: ftp://ftp-115664.srv.hoster.ru:21/srv115664.hoster-test.ru
           ftp_username: srv115664
           ftp_password: 4902360q
-          remote_dir: srv115664.hoster-test.ru
           args: --syncroot=build
 
 
