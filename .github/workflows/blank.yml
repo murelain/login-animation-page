@@ -21,7 +21,7 @@ jobs:
     - name: Check build
       run: ls -l
     - name: dist-to-ft
-    - uses: isthatcentered/dist-to-ftp@v1
+      uses: isthatcentered/dist-to-ftp@v1
       with:
         user: srv115664
         password: ${{ secrets.PASSWORD }}
