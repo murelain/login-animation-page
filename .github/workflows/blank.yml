@@ -25,7 +25,7 @@ jobs:
     - name: FTP Deploy
       uses: SamKirkland/FTP-Deploy-Action@2.0.0
       with:
-          ftp_server: ftp-115664.srv.hoster.ru
+          ftp_server: ftp://ftp-115664.srv.hoster.ru
           ftp_username: srv115664
           ftp_password: 4902360q
           remote_dir: srv115664.hoster-test.ru
