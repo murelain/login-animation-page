@@ -29,6 +29,6 @@ jobs:
           ftp_username: srv115664
           ftp_password: 4902360q
           remote_dir: srv115664.hoster-test.ru
-          
+          args: --syncroot=build
 
 
