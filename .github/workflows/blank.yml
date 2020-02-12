@@ -19,4 +19,16 @@ jobs:
     - name: Build project
       run: npm run-script build
     - name: Check build
-      run: ls -l
+      run: |
+           cd dist
+           ls -l
+    - name: FTP Deploy
+      uses: SamKirkland/FTP-Deploy-Action@2.0.0
+      with:
+          ftp_server: ftp-115664.srv.hoster.ru
+          ftp_username: srv115664
+          ftp_password: 4902360q
+          remote_dir: srv115664.hoster-test.ru
+          
+
+
