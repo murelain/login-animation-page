@@ -1,0 +1,33 @@
+name: build and deploy
+
+on:
+  push:
+    branches:
+    - master
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v1
+      with:
+        node-version: 10.16.0
+    - name: npm install
+      run: npm install
+    - name: Build project
+      run: npm run-script build
+    - name: Check build
+      run: ls -l
+    - name: dist-to-ft
+      uses: isthatcentered/dist-to-ftp@v1
+      with:
+        user: ${{ secrets.FTP_USER }}
+        password: ${{ secrets.FTP_PASSWORD }}
+        host: ${{ secrets.FTP_HOST }}
+        path: ./dist/mobile-test
+        into: /srv115664.hoster-test.ru
+        # Remove existing file inside FTP destination folder
+        cleanupExisting: true
+
