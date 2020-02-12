@@ -23,7 +23,7 @@ jobs:
            cd dist
            ls -l
     - name: FTP Deploy
-      uses: SamKirkland/FTP-Deploy-Action@2.0.0
+      uses: SamKirkland/FTP-Deploy-Action-Typescript@master
       with:
           ftp_server: ftp://ftp-115664.srv.hoster.ru
           ftp_username: srv115664
