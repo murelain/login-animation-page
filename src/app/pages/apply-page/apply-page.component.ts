@@ -1,14 +1,27 @@
 
-import {Observable} from 'rxjs';
+import {Observable, of} from 'rxjs';
 import {AutocompleteInputDataProvider, AutocompleteInputData} from '../../common/autocomplete-input/types';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Component, OnInit} from '@angular/core';
 import {Upload, User} from '../../models';
 import {IsSSN, PasswordMatchValidator, PasswordValidator} from '../../lib/helpers/validators';
-import {Response} from '@angular/http';
 import * as moment from 'moment';
 
+export class SubjectsDataProvider implements AutocompleteInputDataProvider {
+    private SUBJECTS = [{name: 'Mathematics'}];
+    constructor() {
+    }
+
+    // todo: filter pipe
+    provide(filter: string): Observable<AutocompleteInputData[]> {
+        return new Observable(sub => {
+            of(this.SUBJECTS).subscribe((response: any) => {
+                sub.next(response.json());
+            }, err => sub.next(err));
+        });
+    }
+}
 
 @Component({
     selector: 'edu-apply-page',
@@ -76,7 +89,16 @@ export class ApplyPageComponent implements OnInit {
         this.resumeForm = new FormGroup({
             resume: new FormControl(null, Validators.required)
         });
-              // End of education
+        const subjectsFormLocalStorage = JSON.parse(localStorage.getItem('subjectsForm') || '[]');
+        this.subjectsForm = new FormGroup({
+            subjects: new FormControl(subjectsFormLocalStorage.subjects || [], Validators.required),
+        });
+        if (!this.isObjectEmpty(subjectsFormLocalStorage)) {
+            this.subjectsForm.markAsDirty();
+        }
+        this.subjectsForm.valueChanges.subscribe(this.localStorageUpdate.bind(this, 'subjectsForm'));
+        // End of education
+
 
         // Legal
         const legalFormLocalStorage = JSON.parse(localStorage.getItem('logalForm') || '{}');
@@ -230,7 +252,6 @@ export class ApplyPageComponent implements OnInit {
     }
 
     onViewStackChange(arg) {
-        console.log('sss', arg)
     }
 
     saveSubjects() {

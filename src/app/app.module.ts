@@ -4,6 +4,7 @@ import { AppComponent } from './app.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { LayoutComponent } from './common/layout/layout.component';
 import { ApplyPageComponent } from './pages/apply-page/apply-page.component';
+import { IconRegistryService } from './services/icons';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonComponentsModule } from './common/common-components.module';
 import {
@@ -20,7 +21,6 @@ import {
 } from '@angular/material';
 import { ReactiveFormsModule } from '@angular/forms';
 import {
-  CUSTOM_ELEMENTS_SCHEMA,
   NgModule,
   NO_ERRORS_SCHEMA,
 } from '@angular/core';
@@ -28,6 +28,7 @@ import { FormsModule } from '@angular/forms';
 import { HammerGestureConfig, HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
 import { AutocompleteInputComponent } from './common/autocomplete-input/autocomplete-input.component';
 import { ModalAlertComponent } from './common/modal-alert/modal-alert.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 export class HammerConfig extends HammerGestureConfig {
@@ -49,16 +50,17 @@ export class HammerConfig extends HammerGestureConfig {
     ModalAlertComponent
   ],
   imports: [
+    MatIconModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatRippleModule,
-    MatIconModule,
     MatSelectModule,
     MatDatepickerModule,
     MatNativeDateModule,
     ReactiveFormsModule,
     FormsModule,
+    HttpClientModule,
     CommonComponentsModule,
     MatAutocompleteModule,
     MatFormFieldModule,
@@ -66,9 +68,11 @@ export class HammerConfig extends HammerGestureConfig {
     MatTooltipModule,
     MatButtonModule,
   ],
-  providers: [{ provide: HAMMER_GESTURE_CONFIG, useClass: HammerConfig },],
+  providers: [
+    IconRegistryService,
+    { provide: HAMMER_GESTURE_CONFIG, useClass: HammerConfig },],
   bootstrap: [AppComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA]
+  schemas: [ NO_ERRORS_SCHEMA]
 })
 export class AppModule { }
 

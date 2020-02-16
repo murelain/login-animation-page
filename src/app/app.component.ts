@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { IconRegistryService } from './services/icons';
 
 @Component({
   selector: 'edu-root',
@@ -7,4 +8,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'mobile-test';
+
+  constructor(private iconRegistry: IconRegistryService) {}
 }

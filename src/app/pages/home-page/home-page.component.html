@@ -5,17 +5,10 @@
   <div style="background: url('/assets/index/animation_02.png');"></div>
   <ng-container *ngIf="scrollStep >= 1">
       <div style="background: url('/assets/index/animation_03.png');"></div>
-      <div style="background: url('/assets/index/animation_04.png');"></div>
-      <div style="background: url('/assets/index/animation_05.png');"></div>
-      <div style="background: url('/assets/index/animation_06.png');"></div>
+      <!-- <div style="background: url('/assets/index/animation_04.png');"></div> -->
+      <!-- <div style="background: url('/assets/index/animation_05.png');"></div> -->
   </ng-container>
-  <ng-container *ngIf="scrollStep >= 5">
-      <div style="background: url('/assets/index/animation_07.png');"></div>
-      <div style="background: url('/assets/index/animation_08.png');"></div>
-      <div style="background: url('/assets/index/animation_09.png');"></div>
-      <div style="background: url('/assets/index/animation_10.png');"></div>
-      <div style="background: url('/assets/index/animation_11.png');"></div>
-  </ng-container>
+ 
 </div>
 
 <div class="animation {{ sceneClass }}" [ngClass]="{ scrolled: scrollStep > 1, up: directionDelta === -1, down: directionDelta === 1 }">
@@ -52,96 +45,6 @@
                       <img class="p3" src="/assets/index/profile3.png" />
                   </div>
               </div>
-
-              <!-- #3 profile & text -->
-              <div class="animation-page" [ngClass]="{ visible: scrollStep <= 7 && scrollStep > 5 }">
-                  <div class="text">
-                      <div class="text-title">Find the right fit</div>
-                      Personalizing learning allows students to build upon their foundations and strengths.
-                      Find a tutor who complements your learning preferences&nbsp;
-                  </div>
-
-                  <div class="animation-block profiles-w-text">
-                      <img class="p1" src="/assets/index/profile1.png" />
-                      <div class="profile-description">
-                          <div class="">
-                              <div class="bubble"></div>
-                              <div class="bubble"></div>
-                              <div class="bubble"></div>
-                              <br />
-                              <div class="bubble"></div>
-                              <div class="bubble"></div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-
-              <!-- #4 messages -->
-              <div class="animation-page" [ngClass]="{ visible: scrollStep <= 9 && scrollStep > 7 }">
-                  <div class="text">
-                      <div class="text-title">Message your tutor</div>
-                      Interact in real time with your tutor to confirm whether (s)he is the right fit for your goals&nbsp;
-                  </div>
-
-                  <div class="animation-block messages visible" *ngIf="scrollStep > 7 && scrollStep <= 9">
-                      <div class="m1">
-                          <div class="message left">
-                              <div class="bubble"></div>
-                              <div class="bubble"></div>
-                              <div class="bubble"></div>
-                          </div>
-                      </div>
-                      <div class="m2">
-                          <div class="message right">
-                              <div class="bubble"></div>
-                              <div class="bubble"></div>
-                          </div>
-                      </div>
-                      <div class="m3">
-                          <div class="message left">
-                              <div class="bubble"></div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-
-              <div class="animation-page" [ngClass]="{ visible: scrollStep <= 10 && scrollStep > 9 }">
-                  <div class="text">
-                      <div class="text-title">Jump into an Instant Session</div>
-                      Ready to roll? Great! You can select Instant Session on search 
-                      to jump into a virtual classroom and start tutoring right away&nbsp;
-                  </div>
-                  <!-- #5 instant session -->
-                  <div class="animation-page" class="animation-block instant-session">
-                      <img class="p1" src="/assets/index/instant-session.png" />
-                      <div class="messages visible">
-                          <div class="m1">
-                              <div class="message left">
-                                  <div class="bubble"></div>
-                                  <div class="bubble"></div>
-                                  <div class="bubble"></div>
-                              </div>
-                          </div>
-                          <div class="m2">
-                              <div class="message right">
-                                  <div class="bubble"></div>
-                                  <div class="bubble"></div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-
-              <div class="animation-page" [ngClass]="{ visible: scrollStep <= 12 && scrollStep > 10 }">
-                  <div class="text">
-                      <div class="text-title">Virtual Classroom</div>
-                      Utilize interactive learning tools in our virtual classroom such as drawing mathematic equations, editing code, or editing text in another language&nbsp;
-                  </div>
-                  <!-- #6 rombo -->
-                  <div class="animation-block rombo">
-                      <img class="p1" src="/assets/index/figures.png" />
-                  </div>
-              </div>
           </div>
       </div>
   </div>
@@ -149,17 +52,12 @@
 <div class="points" [style.opacity]="scrollStep > 0 ? 1 : 0">
   <div class="point" [ngClass]="{ active: scrollStep <= 3 }"></div>
   <div class="point" [ngClass]="{ active: scrollStep <= 5 && scrollStep > 3 }"></div>
-  <div class="point" [ngClass]="{ active: scrollStep <= 7 && scrollStep > 5 }"></div>
-  <div class="point" [ngClass]="{ active: scrollStep <= 9 && scrollStep > 7 }"></div>
-  <div class="point" [ngClass]="{ active: scrollStep <= 11 && scrollStep > 9 }"></div>
-  <div class="point" [ngClass]="{ active: scrollStep <= 12 && scrollStep > 11 }"></div>
 </div>
 <div class="body" (swipeleft)="onSwipe($event)" (swiperight)="onSwipe($event)"  [ngClass]="{ scrolled: scrollStep > 0 }">
   <div class="main-content step-{{scrollStep}}">
       <div class="greeting">
           <div class="welcome">
-              <h2>Welcome to</h2>
-              <img src="/assets/learnt-logo.svg" alt="Learnt logo" title="Learnt logo" class="logo-big" />
+              <h2>Welcome</h2>
               <div class="logo-tm logo-tm-welcome text-red">TM</div>
           </div>
           <p>A place where you can connect instantly with talented tutors.</p>
@@ -192,32 +90,8 @@
 </div>
 
 <div class="sign-up-wrapper">
-  <div class="sign-up sign-up-desktop">
-      <!-- <form [formGroup]="signUpForm">
-          <div class="sign-up-row">
-              <span class="text">I'm a</span>
-              <mat-form-field>
-                  <mat-select formControlName="role">
-                      <mat-option [value]="'student'">student</mat-option>
-                      <mat-option [value]="'tutor'">tutor</mat-option>
-                  </mat-select>
-              </mat-form-field>
-          </div>
-          <div class="sign-up-row">
-              <span class="text text-desktop">and my email is</span>
-              <span class="text text-mobile">My email</span>
-              <mat-form-field class="email-address">
-                  <input matInput placeholder="your email here" formControlName="email" />
-              </mat-form-field>
-          </div>
-
-          <button mat-raised-button type="button" [disabled]="signUpForm.pristine || signUpForm.invalid" (click)="submitSignUp()">
-              Join Us
-          </button>
-      </form> -->
-  </div>
   <div class="sign-up sign-up-mobile">
-      <button mat-raised-button type="button" [routerLink]="['/apply']">
+      <button mat-raised-button type="button" [routerLink]="['/registry']">
               Join Us
       </button>
   </div>

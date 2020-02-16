@@ -31,6 +31,8 @@ export class HomePageComponent implements OnInit, OnDestroy {
 
     public directionDelta: 1 | -1;
 
+    public totalSteps = 4;
+
     private transitions = [600, 2400, 600, 1800, 1400, 1600, 1200, 700, 300, 1600, 2500, 800, 400];
 
     constructor(
@@ -77,7 +79,7 @@ export class HomePageComponent implements OnInit, OnDestroy {
         if (this.scrollStep === 0 && this.directionDelta === -1) {
             return;
         }
-        if (this.scrollStep === 13 && this.directionDelta === 1) {
+        if (this.scrollStep === this.totalSteps && this.directionDelta === 1) {
             return;
         }
 
@@ -85,8 +87,9 @@ export class HomePageComponent implements OnInit, OnDestroy {
 
         const showNextAnim = () => {
             setTimeout(() => {
-                this.scrollStep += this.scrollStep +
-                                this.directionDelta <= 12 && this.scrollStep + this.directionDelta >= 0 ? this.directionDelta : 0;
+                this.scrollStep += this.scrollStep + this.directionDelta <= this.totalSteps && this.scrollStep + this.directionDelta >= 0 
+                                ? this.directionDelta
+                                : 0;
                 this.scrolling = false;
                 this.sceneClass = `stage scene${this.scrollStep} ${this.directionDelta < 0 ? 'reverse' : ''}`;
 

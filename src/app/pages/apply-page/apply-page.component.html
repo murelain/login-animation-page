@@ -162,18 +162,25 @@
                                 </li>
                             </ul>
                         </div>
- 
+
+                        <h3 class="input-title">Your Subjects</h3>
+                        <!-- need a placeholder here like: start typing names of subjects -->
+                        <form [formGroup]="subjectsForm">
+                            <edu-autocomplete-input label="name" [dataProvider]="subjectsDataProvider" formControlName="subjects" [multiple-outputs]="true"></edu-autocomplete-input>
+                        </form>
 
                         <div layout="row" layout-align="end center" class="gap-10 form-buttons">
                             <button mat-button (click)="step = step - 1" class="back-btn">
                                 <span>Back</span>
 
                             </button>
-                            <button mat-raised-button class="next-btn" color="primary" (click)="saveSubjects()">
+                            <button mat-raised-button class="next-btn" color="primary" (click)="saveSubjects()"
+                                    [disabled]="!subjectsForm.get('subjects').valid || subjectsForm.get('subjects').value.length === 0 || !resumeForm.get('resume').valid">
                                 Next
                             </button>
 
                         </div>
+                       
                     </div>
                 </div>
                 <div class="rightside">
