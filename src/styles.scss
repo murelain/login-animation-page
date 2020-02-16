@@ -367,119 +367,6 @@ $i: 5;
     justify-content: center;
 }
 
-.cdk-overlay-pane.notifications {
-    z-index: 1001; // raise notifications over panels
-}
-.joyride-step__container {
-    color: #fff !important;
-    background-color: transparent !important;
-    box-shadow: none !important;
-    position: static !important;
-}
-.joyride-step__counter,
-.joyride-step__close svg {
-    display:none !important;
-}
-.joyride-step__close {
-    position: absolute;
-    right: 50px !important;
-    top: auto !important;
-    width: auto !important;
-    height: auto !important;
-    cursor: pointer !important;
-    bottom: 34px !important;
-}
-.joyride-step__close::before {
-    content: 'skip';
-    font-size: 15px;
-    font-weight: 900;
-    color: #fff;
-    padding: 15px 55px;
-    border: 3px solid #F37073;
-    border-radius: 35px;
-    min-width: 150px !important;
-    text-transform: uppercase;
-}
-button.joyride-button {
-    font-size: 15px !important;
-    font-weight: 900;
-    color: #fff !important;
-    padding: 15px 55px !important;
-    border: 3px solid #F37073 !important;
-    border-radius: 35px !important;
-    background: transparent !important;
-    position: absolute;
-    bottom: 15px;
-    top: auto;
-    right: 235px;
-}
-.joyride-step__prev-button button.joyride-button {
-    right: 400px;
-}
-.joyride-step__holder {    
-    bottom: 0;  
-    right: 20%; 
-}
-.joyride-step__body {
-    text-align: left;
-    padding: 90px 8px 0 !important;
-    display: flex;
-    align-items:flex-end; 
-    position: relative;
-    padding-left: 285px !important;
-    font-size: 18px;
-    color: #fff;
-    font-style: italic;
-  
-}
-.joyride-step__title {
-    color: #fff !important;
-    font-family: 'proximasoft-regular', sans-serif !important;
-}
-
-.joyride-arrow__top {
-    background: url('assets/arow.png') no-repeat top left;
-    background-size: contain;
-    border: 0 !important;
-    height: 125px;
-    width: 170px;
-}
-.joyride-arrow__left {
-    background: url('assets/lftarw.png') no-repeat top left;
-    background-size: contain;
-    border: 0 !important;
-    height: 125px;
-    width: 170px;
-    position: relative;
-    top: -55px;
-}
-.joyride-arrow__right {
-    background: url('assets/rightarw.png') no-repeat top left;
-    background-size: contain;
-    border: 0 !important;
-    border: 0 !important;
-    height: 148px;
-    width: 183px;
-    position: relative;
-    left: -170px;
-    top: -245px;
-}
-.joyride-arrow__bottom{
-    background: url('assets/arrow-down.png') no-repeat top left;
-    background-size: contain;
-    border: 0 !important;
-    border: 0 !important;
-    height: 148px;
-    width: 132px;
-    left: 20px;
-    top: -150px;
-    position: absolute;
-    transform: rotate(20deg); 
-}
-.joyride-step__title {
-    margin-left: 150px;
-   
-}
 .edutable {
     display: none;
 }
@@ -525,31 +412,8 @@ button.joyride-button {
         border-radius: 5px ;
         padding: 20px 20px;
     }
-    [_nghost-c9] .inner.center {
-        align-items: center;
-        display: flex !important;
-        justify-content: center;
-        flex-direction: row !important;
-    }
-    [_nghost-c23]{
-        padding: 10px 10px !important;
-    }    
-    [_nghost-c23] .certificate-row[_ngcontent-c23]{
-        text-align: center;
-    }
-    [_nghost-c22] .messages[_ngcontent-c22] {
-        max-width: 350px;
-        margin-right: 20px;
-        font-weight: 300;
-        min-height: 75vh;
-        align-items: center;
-        justify-content: center;
-    }
-    [_nghost-c22]{
-        max-width: 320px;
-    }
-  
-    .contents.cards .row[_ngcontent-c19]{
+
+    .contents.cards .row {
         flex-direction: column !important;
         display: block !important;
     }
@@ -557,9 +421,7 @@ button.joyride-button {
 } 
 
 @media (max-width: $layout-breakpoint-xs) {
-    [_nghost-c9]{
-        background-image: none !important;
-    } 
+
     .router {
         flex: 0;
         border-top-left-radius: 0 !important;

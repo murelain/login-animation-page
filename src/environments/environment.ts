@@ -8,7 +8,7 @@ export const environment = {
 
     API_HOST: '',
 
-    API_SOCKET_URL: 'ws://api.learnt.io/ws',
+    API_SOCKET_URL: 'ws://localhost.io/ws',
 
     MSG_HOST: '',
 

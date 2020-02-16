@@ -9,6 +9,7 @@ import {IsSSN, PasswordMatchValidator, PasswordValidator} from '../../lib/helper
 import * as moment from 'moment';
 
 export class SubjectsDataProvider implements AutocompleteInputDataProvider {
+   
     private SUBJECTS = [{name: 'Mathematics'}];
     constructor() {
     }
@@ -63,7 +64,7 @@ export class ApplyPageComponent implements OnInit {
     public maxDate: Date;
 
     public hasSSN = false;
-
+    public subjectsDataProvider: SubjectsDataProvider;
     /**
      * This is filled when user is activated by an admin
      * and user comes back to finalize the registration.
@@ -84,7 +85,7 @@ export class ApplyPageComponent implements OnInit {
         this.maxDate = new Date(max.getFullYear(), max.getMonth(), max.getDate());
 
         this.initProfieForm();
-
+        this.subjectsDataProvider = new SubjectsDataProvider();
         // Education
         this.resumeForm = new FormGroup({
             resume: new FormControl(null, Validators.required)

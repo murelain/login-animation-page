@@ -18,6 +18,7 @@ export class IconRegistryService {
         reg.addSvgIcon('locked', s.bypassSecurityTrustResourceUrl('/assets/locked.svg'));
         reg.addSvgIcon('menu', s.bypassSecurityTrustResourceUrl('/assets/menu.svg'));
         reg.addSvgIcon('search', s.bypassSecurityTrustResourceUrl('/assets/search.svg'));
+        reg.addSvgIcon('checkmark', s.bypassSecurityTrustResourceUrl('/assets/checkmark.svg'));
 
         // Social
         reg.addSvgIcon('facebook', s.bypassSecurityTrustResourceUrl('/assets/social/facebook.svg'));

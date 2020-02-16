@@ -1,15 +1,15 @@
 export const environment = {
     production: true,
 
-    API_HOST: 'https://api.learnt.io',
+    API_HOST: 'https://localhost',
 
-    API_SOCKET_URL: 'ws://api.learnt.io/ws',
+    API_SOCKET_URL: 'ws://localhost.io/ws',
 
-    MSG_HOST: 'http://msg.learnt.io',
+    MSG_HOST: 'http://msg.localhost',
 
-    MSG_SOCKET_URL: 'wss://msg.learnt.io/ws',
+    MSG_SOCKET_URL: 'wss://msg.localhost/ws',
 
-    COOKIE_DOMAIN: '.learnt.io',
+    COOKIE_DOMAIN: '.localhost',
 
     MAPBOX_TOKEN: 'pk.eyJ1IjoidHV0b3JhcHAiLCJhIjoiY2luNjJrYThqMGU4NHZobTRrb3N5dW8ydyJ9.tWCvx9Qix0jRtOpYN695CQ',
 

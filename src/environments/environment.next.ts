@@ -1,15 +1,15 @@
 export const environment = {
     production: true,
 
-    API_HOST: 'https://next-api.learnt.io',
+    API_HOST: 'https://next-localhost.io',
 
-    API_SOCKET_URL: 'wss://next-api.learnt.io/ws',
+    API_SOCKET_URL: 'wss://next-localhost.io/ws',
 
-    MSG_HOST: 'https://msg.next.learnt.io',
+    MSG_HOST: 'https://msg.next.localhost',
 
-    MSG_SOCKET_URL: 'wss://msg.next.learnt.io/ws',
+    MSG_SOCKET_URL: 'wss://msg.next.localhost/ws',
 
-    COOKIE_DOMAIN: '.next.learnt.io',
+    COOKIE_DOMAIN: '.next.localhost',
 
     MAPBOX_TOKEN: 'pk.eyJ1IjoidHV0b3JhcHAiLCJhIjoiY2luNjJrYThqMGU4NHZobTRrb3N5dW8ydyJ9.tWCvx9Qix0jRtOpYN695CQ',
 

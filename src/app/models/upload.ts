@@ -24,6 +24,6 @@ export class Upload {
     expire: moment.Moment;
 
     get href(): string {
-        return `https://s3.amazonaws.com/nerdly.io/${this.url}`;
+        return `localhost/${this.url}`;
     }
 }

@@ -309,7 +309,7 @@ export class User {
         if (this.profile && this.profile.avatar) {
             return this.profile.avatar.href;
         }
-        return 'https://s3.amazonaws.com/tutorthepeople/temp/default-avatar.png';
+        return 'localhost/avatar.png';
     }
 
     get email() {

@@ -12,8 +12,8 @@ import {
 } from '@angular/core';
 import {NG_VALUE_ACCESSOR, ControlValueAccessor} from '@angular/forms';
 
-let __nerdly_checkbox_index = 0;
-const __nerdly_group = {};
+let __edu_checkbox_index = 0;
+const __edu_group = {};
 
 @Component({
     selector: 'edu-checkbox',
@@ -73,7 +73,7 @@ export class CheckboxComponent implements OnInit, ControlValueAccessor {
     };
 
     constructor() {
-        this.id = 'edu-checkbox-' + (++__nerdly_checkbox_index);
+        this.id = 'edu-checkbox-' + (++__edu_checkbox_index);
     }
 
     @HostBinding('class.align-left')
@@ -87,10 +87,10 @@ export class CheckboxComponent implements OnInit, ControlValueAccessor {
             if (!this.type) {
                 this.type = 'radio';
             }
-            if (!__nerdly_group[this.group]) {
-                __nerdly_group[this.group] = [];
+            if (!__edu_group[this.group]) {
+                __edu_group[this.group] = [];
             }
-            __nerdly_group[this.group].push(this);
+            __edu_group[this.group].push(this);
         } else {
             if (!this.type) {
                 this.type = 'checkbox';
@@ -138,7 +138,7 @@ export class CheckboxComponent implements OnInit, ControlValueAccessor {
         if (this.group) {
             this.onChangeFn(this.value);
             this.change.next(this.value);
-            for (const e of __nerdly_group[this.group]) {
+            for (const e of __edu_group[this.group]) {
                 if (e !== this) {
                     e.checked = false;
                 }
