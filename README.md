@@ -9,6 +9,7 @@ Available here http://srv115664.hoster-test.ru/
 * Animated homepage  
 * CI/CD (simple build and deploy to ftp)
 * Not much of RxJs in this part
+* HammerJS for mobile interaction
 
 ### Disclaimer
 All images and icons were designed by someone else and I don't use it anywhere else.
